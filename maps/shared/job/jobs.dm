@@ -113,6 +113,7 @@
 	ideal_character_age = 65
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/governor
 	social_class = SOCIAL_CLASS_MAX
+	sex_lock = MALE
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -130,6 +131,7 @@
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/adjoint
 	social_class = SOCIAL_CLASS_HIGH
+	sex_lock = MALE
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -245,6 +247,7 @@
 	minimal_player_age = 7
 	outfit_type = /decl/hierarchy/outfit/job/security/head_peacekeeper
 	social_class = SOCIAL_CLASS_HIGH
+	sex_lock = MALE
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -264,6 +267,7 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/peacekeeper
+	sex_lock = MALE
 
 	equip(var/mob/living/carbon/human/H)
 		..()

@@ -35,6 +35,8 @@
 	var/no_late_join = 0				  //Can this job join after the round has started?
 	var/social_class = SOCIAL_CLASS_MED	  //Job's social standing.
 
+	var/sex_lock
+
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title, var/datum/mil_branch/branch)
 	H.social_class = social_class
 	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title, branch)

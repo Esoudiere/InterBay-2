@@ -87,6 +87,8 @@ var/global/datum/controller/occupations/job_master
 				return 0
 			if(jobban_isbanned(player, rank))
 				return 0
+			if(job.sex_lock && player.client.prefs.gender != job.sex_lock)
+				return 0
 			if(!job.player_old_enough(player.client))
 				return 0
 			if(!job.is_branch_allowed(player.get_branch_pref()))
@@ -127,6 +129,9 @@ var/global/datum/controller/occupations/job_master
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				Debug("FOC character not old enough, Player: [player]")
 				continue
+			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
+				Debug("FOC character wrong gender, Player: [player]")
+				continue
 			if(flag && !(flag in player.client.prefs.be_special_role))
 				Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 				continue
@@ -142,6 +147,9 @@ var/global/datum/controller/occupations/job_master
 				continue
 
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
+				continue
+
+			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
 				continue
 
 			if(istype(job, GetJob("Assistant"))) // We don't want to give him assistant, that's boring!
@@ -301,6 +309,10 @@ var/global/datum/controller/occupations/job_master
 
 					if(!job.player_old_enough(player.client))
 						Debug("DO player not old enough, Player: [player], Job:[job.title]")
+						continue
+
+					if(job.sex_lock && job.sex_lock != player.client.prefs.gender)
+						Debug("DO player wrong gender, Player: [player], Job:[job.title]")
 						continue
 
 					// If the player wants that job on this level, then try give it to him.
